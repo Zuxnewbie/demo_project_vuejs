@@ -23,10 +23,9 @@ const routes = [
     component: () => import("../views/CheckOutView.vue"),
   },
   {
-    path: '/details',
-    name: 'Details',
+    path: "/details",
+    name: "Details",
     component: () => import("../views/DetailsView.vue"),
-
   },
 
   // trang chi tiet san pham
@@ -47,9 +46,14 @@ const routes = [
     component: () => import("../views/Category/Category_View.vue"),
   },
   {
-    path: "/admin",
+    path: "/admin/view",
     name: "Admin_view",
     component: () => import("../views/Admin_view.vue"),
+  },
+  {
+    path: "/admin",
+    name: "Admin_login",
+    component: () => import("../views/Admin_login.vue"),
   },
   {
     path: "/admin/product",
@@ -96,6 +100,30 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
+});
+
+router.beforeEach((to, from, next) => {
+  const isAdminRoute = to.matched.some((record) =>
+    record.path.startsWith("/admin")
+  );
+
+  const isLoggedIn = localStorage.getItem("isAdminLoggedIn");
+
+  // Kiểm tra xem đường dẫn hiện tại có phải là đăng nhập admin không
+  const isLoginRoute = to.name === "Admin_login";
+
+  console.log(isLoggedIn);
+
+  // Nếu đường dẫn hiện tại là trang đăng nhập admin và đã đăng nhập, chuyển hướng đến trang admin
+  if (isLoginRoute && isLoggedIn === "true") {
+    next({ name: "home" });
+  }
+  // Nếu đang cố gắng truy cập vào một route admin mà chưa đăng nhập, chuyển hướng đến trang đăng nhập admin
+  else if (isAdminRoute && isLoggedIn !== "true" && !isLoginRoute) {
+    next("/admin");
+  } else {
+    next(); // Cho phép tiếp tục truy cập
+  }
 });
 
 export default router;

@@ -1,32 +1,35 @@
 <template>
-
-  <AppNavbar />
-  <!-- <nav>
-    <router-link to="/admin">Admin</router-link> |
-  </nav> -->
-  <router-view v-if="categories && products" :baseURL="baseURL" :categories="categories" :products="products"
-    :users="users" @fetchData="fetchData" style="min-height: 60vh;">
-  </router-view>
-  <!-- footer -->
-  <Footer_home />
+  <div id="app">
+    <AppNavbar />
+    <router-view v-if="categories && products" :baseURL="baseURL" :categories="categories" :products="products"
+      :users="users" :admin="admin" @fetchData="fetchData" style="min-height: 60vh">
+    </router-view>
+    <Footer_home />
+  </div>
 </template>
 
 <script>
+// import { mapState } from "vuex";
 import axios from "axios";
+
 import AppNavbar from "./components/AppNavbar.vue";
 import Footer_home from "./components/Footer_home.vue";
 
 export default {
   components: {
-    AppNavbar, Footer_home
+    AppNavbar,
+    Footer_home,
   },
+
   data() {
     return {
       baseURL: "http://localhost:3000/",
       products: null,
       categories: null,
-      users: null
-    }
+      users: null,
+      admin: null,
+      isAdminLoggedIn: false,
+    };
   },
   methods: {
     async fetchData() {
@@ -39,14 +42,26 @@ export default {
 
         const usersResponse = await axios.get(this.baseURL + "users");
         this.users = usersResponse.data;
+
+        const adminResponse = await axios.get(this.baseURL + "admin");
+        this.admin = adminResponse.data;
       } catch (error) {
         console.error("Error fetching data:", error);
       }
-    }
+    },
+  },
+  watch: {
+    // Kiểm tra khi trạng thái đăng nhập của admin thay đổi và chuyển hướng nếu cần
+    isAdminLoggedIn(newValue) {
+      if (!newValue && this.$route.path.startsWith("/admin")) {
+        this.$router.replace("/admin");
+      }
+    },
   },
   mounted() {
     this.fetchData();
-  }
+  },
+
 };
 </script>
 

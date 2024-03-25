@@ -63,5 +63,11 @@
       "lastName": "Nhân",
       "password": 123
     }
+  ],
+  "admin": [
+    {
+      "name": "admin",
+      "pass": "123456"
+    }
   ]
 }
