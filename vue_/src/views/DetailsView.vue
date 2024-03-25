@@ -43,10 +43,21 @@
                 </div>
               </div>
 
-              <router-link class="btn border border-secondary rounded-pill px-4 py-2 mb-4 text-primary" :to="{ name: 'Cart' }" >
-                <i class="fa fa-shopping-bag me-2 text-primary"></i> Add to
-                cart
-            </router-link>
+              <router-link
+                v-if="!isLoggedIn"
+                @click="showAlert"
+                class="btn border border-secondary rounded-pill px-4 py-2 mb-4 text-primary"
+                :to="{ name: 'Signin' }"
+              >
+                <i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart
+              </router-link>
+              <button
+                v-else
+                @click="addToCart"
+                class="btn border border-secondary rounded-pill px-4 py-2 mb-4 text-primary"
+              >
+                <i class="fa fa-shopping-bag me-2 text-primary"></i> Add to cart
+              </button>
             </div>
             <div class="col-lg-12">
               <nav>
@@ -223,12 +234,9 @@
                 </div>
               </div>
             </div>
-           
           </div>
         </div>
-        
       </div>
-
     </div>
   </div>
   <!-- Single Product End -->
@@ -237,7 +245,22 @@
 <script>
 export default {
   name: "CheckOutView",
-  data() {},
+  computed: {
+    isLoggedIn() {
+      return this.$store.state.isLoggedIn;
+    },
+  },
+  methods: {
+    showAlert() {
+      alert("You don't have an account yet. Please sign up or sign in.");
+    },
+    addToCart() {
+      // Logic to add item to cart
+    },
+    redirectToSignIn() {
+      this.$router.push({ name: "Signin" });
+    },
+  },
 };
 </script>
 

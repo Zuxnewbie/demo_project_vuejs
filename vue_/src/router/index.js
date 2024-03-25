@@ -8,6 +8,16 @@ const routes = [
     component: HomeView,
   },
   {
+    path: "/error",
+    name: "ErrorView",
+    component: () => import("../views/ErrorView.vue"),
+
+  },
+  {
+    path: "/:pathMatch(.*)",
+    redirect: { name: "ErrorView" }, // Redirect to the ErrorView component
+  },
+  {
     path: "/shop",
     name: "Shop",
     component: () => import("../views/ShopView.vue"),
