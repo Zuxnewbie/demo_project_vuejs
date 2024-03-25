@@ -1,0 +1,67 @@
+{
+  "category": [
+    {
+      "id": "1",
+      "categoryName": "Trái cây Việt Nam",
+      "description": "Ngon bổ rẽ",
+      "imgaeUrl": "213123"
+    },
+    {
+      "id": "2885",
+      "categoryName": "Ớt",
+      "description": "Cay vc",
+      "imageUrl": "https://suckhoedoisong.qltns.mediacdn.vn/324455921873985536/2022/6/18/cach-an-che-bien-bao-quan-ot-2-1655566236587196946971.jpg"
+    }
+  ],
+  "product": [
+    {
+      "id": "69bd",
+      "productID": "2885",
+      "description": "312321",
+      "productName": "12312",
+      "price": 3213,
+      "imageURL": "https://product.hstatic.net/200000157781/product/dsc_7673_copy_21112823a1ce471d895c58e3ea2bf8e8.jpg"
+    },
+    {
+      "id": "7e12",
+      "productID": "2885",
+      "description": "2131321",
+      "productName": "123",
+      "price": 321321,
+      "imageURL": "https://product.hstatic.net/200000157781/product/dsc_7673_copy_21112823a1ce471d895c58e3ea2bf8e8.jpg"
+    },
+    {
+      "id": "8b0b",
+      "productID": "2885",
+      "description": "313",
+      "productName": "12321",
+      "price": 2132131,
+      "imageURL": "https://product.hstatic.net/200000157781/product/dsc_7673_copy_21112823a1ce471d895c58e3ea2bf8e8.jpg"
+    },
+    {
+      "id": "71b4",
+      "productID": "1",
+      "description": "fds",
+      "productName": "123",
+      "price": 23423432424,
+      "imageURL": "https://product.hstatic.net/200000157781/product/dsc_7673_copy_21112823a1ce471d895c58e3ea2bf8e8.jpg"
+    },
+    {
+      "id": "7d50",
+      "productID": "2885",
+      "description": "213121",
+      "productName": "3213",
+      "price": 321,
+      "imageURL": "321312"
+    }
+  ],
+  "users": [
+    {
+      "id": "ac32",
+      "email": "huynhthanhnhan632004@gmail.com",
+      "firstName": "Huỳnh",
+      "lastName": "Nhân",
+      "password": 123
+    }
+  ]
+}
