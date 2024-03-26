@@ -2,7 +2,7 @@
   <div id="app">
     <AppNavbar />
     <router-view v-if="categories && products" :baseURL="baseURL" :categories="categories" :products="products"
-      :users="users" :admin="admin" @fetchData="fetchData" style="min-height: 60vh">
+      :users="users" :admin="admin" :carts="carts" @fetchData="fetchData" style="min-height: 60vh">
     </router-view>
     <Footer_home />
   </div>
@@ -28,6 +28,7 @@ export default {
       categories: null,
       users: null,
       admin: null,
+      carts: null,
       isAdminLoggedIn: false,
     };
   },
@@ -45,6 +46,9 @@ export default {
 
         const adminResponse = await axios.get(this.baseURL + "admin");
         this.admin = adminResponse.data;
+
+        const cartResponse = await axios.get(this.baseURL + "carts");
+        this.carts = cartResponse.data;
       } catch (error) {
         console.error("Error fetching data:", error);
       }

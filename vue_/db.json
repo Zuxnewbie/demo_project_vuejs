@@ -7,52 +7,34 @@
       "imgaeUrl": "213123"
     },
     {
-      "id": "2885",
-      "categoryName": "Ớt",
-      "description": "Cay vc",
-      "imageUrl": "https://suckhoedoisong.qltns.mediacdn.vn/324455921873985536/2022/6/18/cach-an-che-bien-bao-quan-ot-2-1655566236587196946971.jpg"
+      "id": "2",
+      "categoryName": "Trái cây Thái",
+      "description": "Đậm vị ngọt",
+      "imageUrl": ""
+    },
+    {
+      "id": "3",
+      "categoryName": "Nước Trái Cây",
+      "description": "Uống tốt cho sức khỏe",
+      "imageUrl": ""
     }
   ],
   "product": [
     {
-      "id": "69bd",
-      "productID": "2885",
-      "description": "312321",
-      "productName": "12312",
-      "price": 3213,
-      "imageURL": "https://product.hstatic.net/200000157781/product/dsc_7673_copy_21112823a1ce471d895c58e3ea2bf8e8.jpg"
-    },
-    {
-      "id": "7e12",
-      "productID": "2885",
-      "description": "2131321",
-      "productName": "123",
-      "price": 321321,
-      "imageURL": "https://product.hstatic.net/200000157781/product/dsc_7673_copy_21112823a1ce471d895c58e3ea2bf8e8.jpg"
-    },
-    {
-      "id": "8b0b",
-      "productID": "2885",
-      "description": "313",
-      "productName": "12321",
-      "price": 2132131,
-      "imageURL": "https://product.hstatic.net/200000157781/product/dsc_7673_copy_21112823a1ce471d895c58e3ea2bf8e8.jpg"
-    },
-    {
-      "id": "71b4",
-      "productID": "1",
-      "description": "fds",
-      "productName": "123",
-      "price": 23423432424,
-      "imageURL": "https://product.hstatic.net/200000157781/product/dsc_7673_copy_21112823a1ce471d895c58e3ea2bf8e8.jpg"
+      "id": "7d50",
+      "productID": "3",
+      "description": "Nước ép nho là một lựa chọn không thể bỏ qua trong danh sách các loại nước ép tốt cho sức khỏe. Loại thức uống này chứa nhiều anthocyanin - một chất chống oxy hóa giúp tăng cường chức năng não. ",
+      "productName": "Nước Ép Nho",
+      "price": 25000,
+      "imageURL": "331313"
     },
     {
       "id": "7d50",
-      "productID": "2885",
-      "description": "213121",
-      "productName": "3213",
-      "price": 321,
-      "imageURL": "321312"
+      "productID": "3",
+      "description": "Nước ép dưa hấu không chỉ giúp thanh lọc và giải độc cơ thể, mà còn cung cấp hàm lượng kali cao giúp tăng cường sức khỏe hệ tuần hoàn.",
+      "productName": "Nước Ép Dưa Hấu ",
+      "price": 22000,
+      "imageURL": "331313"
     }
   ],
   "users": [
@@ -68,6 +50,32 @@
     {
       "name": "admin",
       "pass": "123456"
+    }
+  ],
+  "carts": [
+    {
+      "id": "1",
+      "categoryId": "1",
+      "quantity": 1,
+      "productName": "Nước Ép Dưa Hấu ",
+      "price": 22000,
+      "imageURL": "331313"
+    },
+    {
+      "id": "5dc1",
+      "categoryId": "3",
+      "quantity": 3,
+      "productName": "Nước Ép Nho",
+      "price": 25000,
+      "imageURL": "331313"
+    },
+    {
+      "id": "dcf7",
+      "categoryId": "3",
+      "quantity": 1,
+      "productName": "Nước Ép Nho",
+      "price": 25000,
+      "imageURL": "331313"
     }
   ]
 }

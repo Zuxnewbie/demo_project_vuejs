@@ -92,7 +92,7 @@ const routes = [
   {
     path: "/product/show/:id",
     name: "ShowDetails",
-    component: () => import("../views/Product/ShowDetails.vue"),
+    component: () => import("../views/DetailsView.vue"),
   },
   // Sign up
   {
