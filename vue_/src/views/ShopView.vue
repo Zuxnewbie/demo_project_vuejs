@@ -80,7 +80,7 @@
                         <a href="#" class="btn border border-secondary rounded-pill px-3 text-primary"></a>
 
                         <router-link class="btn border border-secondary rounded-pill px-3 text-primary"
-                          :to="{ name: 'Details' }">
+                          :to="{ name: 'ShowDetails', params: { id: product.id } }">
                           <i class="fa fa-shopping-bag me-2 text-primary"></i>
                           View More
                         </router-link>

@@ -21,7 +21,135 @@
   ],
   "product": [
     {
-      "id": "7d50",
+      "id": "71b4",
+      "productID": "1",
+      "description": "Chuối là tên gọi loại quả của các loài cây thuộc chi chuối, đây được coi là một trong các loại trái cây được ăn rộng rãi nhất. Những cây chuối có gốc từ vùng nhiệt đới ở Đông Nam Á và Úc. Ngày nay, chuối được trồng khắp vùng nhiệt đới.",
+      "productName": "Chuối",
+      "price": 16000,
+      "imageURL": "https://product.hstatic.net/200000157781/product/dsc_7673_copy_21112823a1ce471d895c58e3ea2bf8e8.jpg"
+    },
+    {
+      "id": "1234",
+      "productID": "1",
+      "description": " Dâu Thời Thìn được trồng theo phương pháp thuỷ canh trong môi trường khép kín cho chất lượng vượt trội đồng thời với phương pháp hiện đại hoàn toàn tránh được dịch bệnh",
+      "productName": "Dâu Thời Thìn",
+      "price": 30000,
+      "imageURL": "https://product.hstatic.net/200000157781/product/dsc_7673_copy_21112823a1ce471d895c58e3ea2bf8e8.jpg"
+    },
+    {
+      "id": "71b6",
+      "productID": "1",
+      "description": "Đu đủ là món ăn phổ biến cũng như loại quả với nhiều công dụng tốt cho sức khoẻ của mọi tầng lớp từ người trẻ đến già và các bé nhỏ.- Đu đủ Long An tại Thế giới",
+      "productName": "Đu Đủ",
+      "price": 85000,
+      "imageURL": "https://product.hstatic.net/200000157781/product/dsc_7673_copy_21112823a1ce471d895c58e3ea2bf8e8.jpg"
+    },
+    {
+      "id": "71b7",
+      "productID": "1",
+      "description": "Sầu riêng được xem là một đặc sản của Việt nam và đã được xuất khẩu đi khắp thế giới với nhiều cái tên như Ri6 - Sáu hủ - Chín hoá - Moongthong (giống của Thái trồng tại VN)",
+      "productName": "Sầu Riêng",
+      "price": 20000,
+      "imageURL": "https://product.hstatic.net/200000157781/product/dsc_7673_copy_21112823a1ce471d895c58e3ea2bf8e8.jpg"
+    },
+    {
+      "id": "71b8",
+      "productID": "1",
+      "description": "Vú sữa không chỉ là một loại quả để ăn mà đằng sau đó là cả 1 sự tích dài đậm chất sắc màu nhân văn của Việt nam.",
+      "productName": "Vú Sữa",
+      "price": 100000,
+      "imageURL": "https://product.hstatic.net/200000157781/product/dsc_7673_copy_21112823a1ce471d895c58e3ea2bf8e8.jpg"
+    },
+    {
+      "id": "71b9",
+      "productID": "1",
+      "description": "Bơ không tên là một trong nhiều các loại bơ hiện đang lưu hành trên thị trường rất được ưa chuộng trong cuộc sống hằng ngày với nhiều cách chế biến và công dụng.",
+      "productName": "Bơ không tên",
+      "price": 114000,
+      "imageURL": "https://product.hstatic.net/200000157781/product/dsc_7673_copy_21112823a1ce471d895c58e3ea2bf8e8.jpg"
+    },
+    {
+      "id": "6923",
+      "productID": "2",
+      "description": "Thanh trà Thái Lan có hình dạng bầu dục, vỏ ửng vàng rất bắt mắt kèm theo đó là vị ngọt mê mẫn không thua gì xoài cát và mùi thơm từ ngoài vỏ cho đến khi khách ăn",
+      "productName": "Thanh trà Thái Lan",
+      "price": 200000,
+      "imageURL": "https://product.hstatic.net/200000157781/product/dsc_7673_copy_21112823a1ce471d895c58e3ea2bf8e8.jpg"
+    },
+    {
+      "id": "7e12",
+      "productID": "2",
+      "description": " Măng cụt hay còn gọi Măng cụt tía là một loại cây nhiệt đới có tên khoa học là Garcinia mangostana, là một loại cây ăn trái phát triển tốt ở khí hậu nhiệt đới",
+      "productName": "Măng cụt Thái",
+      "price": 250000,
+      "imageURL": "https://product.hstatic.net/200000157781/product/dsc_7673_copy_21112823a1ce471d895c58e3ea2bf8e8.jpg"
+    },
+    {
+      "id": "8b01",
+      "productID": "2",
+      "description": "Na Thái hay còn gọi Mãng cầu Thái là một giống cây nhập khẩu du nhập vào Việt nam đã lâu nhưng thời gian gần đây từ 2018 Na Thái đã phủ sóng  mọi miền từ Bắc vào Nam",
+      "productName": "Na Thái",
+      "price": 120000,
+      "imageURL": "https://product.hstatic.net/200000157781/product/dsc_7673_copy_21112823a1ce471d895c58e3ea2bf8e8.jpg"
+    },
+    {
+      "id": "8b02",
+      "productID": "2",
+      "description": "Me Nù Thái thịt dẻo hương vị cùng độ ngọt khiến người ăn như bị cuống vào hương vị của Me mang lại",
+      "productName": "Me Nù",
+      "price": 170000,
+      "imageURL": "321312"
+    },
+    {
+      "id": "8b03",
+      "productID": "2",
+      "description": "Me Thái thịt mềm khi ăn có vị ngọt vừa phải không quá gắt cũng không nhạt.- Me Thái tại Thế giới trái cây đặc trựng thịt dày trái to mập tròn",
+      "productName": "Me Thái",
+      "price": 150000,
+      "imageURL": "321312"
+    },
+    {
+      "id": "8b04",
+      "productID": "2",
+      "description": "Me dốt bột có nguồn xuất xứ từ Thái Lan và rộ mùa vào khoảng đầu tháng 12 Dương lịch trùng với không khí của dịp lễ Giáng Sinh và bạn có thể tìm mua loại Me dốt bột ngon nhất tại Sài gòn và các tỉnh thành ở Thế giới",
+      "productName": "Me Dốt Bột Thái Lan",
+      "price": 170000,
+      "imageURL": "321312"
+    },
+    {
+      "id": "8b05",
+      "productID": "3",
+      "description": "Bòn bon hay còn gọi là quả boòng boong tại Thế giới trái cây có xuất xứ chính gốc từ Thái Lan với đặc điểm nổi bật: chùm to chắc tay từ 500-800gr, khít trái, da sáng, vị ngọt đậm đà.",
+      "productName": "Bòn Bon Thái Lan",
+      "price": 200000,
+      "imageURL": "331313"
+    },
+    {
+      "id": "8b06",
+      "productID": "3",
+      "description": "Nước ép táo là một lựa chọn tốt cho sức khỏe, nhờ chứa nhiều kali, một chất điện giải quan trọng cho hệ thần kinh và tim mạch.",
+      "productName": "Nước Ép Táo",
+      "price": 20000,
+      "imageURL": "331313"
+    },
+    {
+      "id": "8b07",
+      "productID": "3",
+      "description": "Nước ép cà chua là một thức uống giàu vitamin C và chất chống oxy hóa, có nhiều lợi ích cho sức khỏe. Trong đó, vitamin C giúp cải thiện khả năng hấp thụ sắt, bảo vệ da và tăng cường sức đề kháng. ",
+      "productName": "Nước Ép Cà Chua",
+      "price": 15000,
+      "imageURL": "331313"
+    },
+    {
+      "id": "8b08",
+      "productID": "3",
+      "description": "Lựu có chứa polyphenols – một chất chống oxy hóa rất mạnh mẽ, giúp giảm viêm, loại bỏ gốc tự do. So với những loại trái cây khác, hàm lượng chất chống oxy hóa trong lựu cao hơn rất nhiều.",
+      "productName": "Nước Ép Lựu",
+      "price": 18000,
+      "imageURL": "331313"
+    },
+    {
+      "id": "8b08",
       "productID": "3",
       "description": "Nước ép nho là một lựa chọn không thể bỏ qua trong danh sách các loại nước ép tốt cho sức khỏe. Loại thức uống này chứa nhiều anthocyanin - một chất chống oxy hóa giúp tăng cường chức năng não. ",
       "productName": "Nước Ép Nho",
@@ -29,7 +157,7 @@
       "imageURL": "331313"
     },
     {
-      "id": "7d50",
+      "id": "8b09",
       "productID": "3",
       "description": "Nước ép dưa hấu không chỉ giúp thanh lọc và giải độc cơ thể, mà còn cung cấp hàm lượng kali cao giúp tăng cường sức khỏe hệ tuần hoàn.",
       "productName": "Nước Ép Dưa Hấu ",
@@ -50,41 +178,19 @@
     {
       "name": "admin",
       "pass": "123456",
-      "id": "0829"
+      "id": "6bd6"
     }
   ],
   "carts": [
     {
-      "id": "1",
+      "id": "50e6",
       "categoryId": "1",
+      "productId": "1234",
+      "idUser": "ac32",
       "quantity": 1,
-      "productName": "Nước Ép Dưa Hấu ",
-      "price": 22000,
-      "imageURL": "331313"
-    },
-    {
-      "id": "5dc1",
-      "categoryId": "3",
-      "quantity": 3,
-      "productName": "Nước Ép Nho",
-      "price": 25000,
-      "imageURL": "331313"
-    },
-    {
-      "id": "dcf7",
-      "categoryId": "3",
-      "quantity": 1,
-      "productName": "Nước Ép Nho",
-      "price": 25000,
-      "imageURL": "331313"
-    },
-    {
-      "id": "4fbb",
-      "categoryId": "3",
-      "quantity": 1,
-      "productName": "Nước Ép Nho",
-      "price": 25000,
-      "imageURL": "331313"
+      "price": 30000,
+      "imageURL": "https://product.hstatic.net/200000157781/product/dsc_7673_copy_21112823a1ce471d895c58e3ea2bf8e8.jpg",
+      "productName": "Dâu Thời Thìn"
     }
   ]
 }
