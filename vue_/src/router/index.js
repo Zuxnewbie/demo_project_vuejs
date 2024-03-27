@@ -11,7 +11,6 @@ const routes = [
     path: "/error",
     name: "ErrorView",
     component: () => import("../views/ErrorView.vue"),
-
   },
   {
     path: "/:pathMatch(.*)",
@@ -134,6 +133,12 @@ router.beforeEach((to, from, next) => {
   } else {
     next(); // Cho phép tiếp tục truy cập
   }
+});
+
+router.beforeEach((to, from, next) => {
+  // Cuộn lên đầu trang khi chuyển route
+  window.scrollTo(0, 0);
+  next();
 });
 
 export default router;

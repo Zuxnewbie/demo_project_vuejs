@@ -18,8 +18,12 @@
             <tr v-for="itemCart in carts" :key="itemCart.id">
               <th scope="row">
                 <div class="d-flex align-items-center">
-                  <img src="../assets/Frontend/img/vegetable-item-3.png" class="img-fluid me-5 rounded-circle"
-                    style="width: 80px; height: 80px" alt="" />
+                  <img
+                    src="../assets/Frontend/img/vegetable-item-3.png"
+                    class="img-fluid me-5 rounded-circle"
+                    style="width: 80px; height: 80px"
+                    alt=""
+                  />
                 </div>
               </th>
               <td>
@@ -29,15 +33,26 @@
                 <p class="mb-0 mt-4">{{ itemCart.price }}</p>
               </td>
               <td class="soluong">
-                <div class="input-group quantity mt-4 " style="width: 100px">
+                <div
+                  class="input-group quantity mt-4"
+                  style="width: 100px; margin: 0 auto"
+                >
                   <div class="input-group-btn">
-                    <button class="btn btn-sm btn-minus rounded-circle bg-light border">
+                    <button
+                      class="btn btn-sm btn-minus rounded-circle bg-light border"
+                    >
                       <i class="fa fa-minus"></i>
                     </button>
                   </div>
-                  <input type="text" class="form-control form-control-sm text-center border-0" value="1" />
+                  <input
+                    type="text"
+                    class="form-control form-control-sm text-center border-0"
+                    value="1"
+                  />
                   <div class="input-group-btn">
-                    <button class="btn btn-sm btn-plus rounded-circle bg-light border">
+                    <button
+                      class="btn btn-sm btn-plus rounded-circle bg-light border"
+                    >
                       <i class="fa fa-plus"></i>
                     </button>
                   </div>
@@ -56,8 +71,15 @@
         </table>
       </div>
       <div class="mt-5">
-        <input type="text" class="border-0 border-bottom rounded me-5 py-3 mb-4" placeholder="Coupon Code" />
-        <button class="btn border-secondary rounded-pill px-4 py-3 text-primary" type="button">
+        <input
+          type="text"
+          class="border-0 border-bottom rounded me-5 py-3 mb-4"
+          placeholder="Coupon Code"
+        />
+        <button
+          class="btn border-secondary rounded-pill px-4 py-3 text-primary"
+          type="button"
+        >
           Apply Coupon
         </button>
       </div>
@@ -80,14 +102,20 @@
                 </div>
               </div>
             </div>
-            <div class="py-4 mb-4 border-top border-bottom d-flex justify-content-between">
+            <div
+              class="py-4 mb-4 border-top border-bottom d-flex justify-content-between"
+            >
               <h5 class="mb-0 ps-4 me-4">Total</h5>
               <p class="mb-0 pe-4">$99.00</p>
             </div>
-            <button class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4"
-              type="button">
+
+            <router-link
+              class="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4"
+              :to="{ name: 'CheckOut' }"
+              type="button"
+            >
               Proceed Checkout
-            </button>
+            </router-link>
           </div>
         </div>
       </div>
@@ -99,8 +127,8 @@
 <script>
 export default {
   name: "CartView",
-  props: ['carts'],
-  data() { },
+  props: ["carts"],
+  data() {},
 };
 </script>
 

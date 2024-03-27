@@ -32,7 +32,11 @@ export default createStore({
         );
 
         if (user) {
+          // Store the user's authentication token or session in localStorage
+          localStorage.setItem("user", JSON.stringify(user));
+
           // For simplicity, let's just set isLoggedIn to true and set the user object
+
           commit("setLoggedIn", true);
           commit("setUser", user);
         } else {
@@ -47,6 +51,8 @@ export default createStore({
     },
     logout({ commit }) {
       // Perform logout actions here
+      localStorage.removeItem("user");
+
       // For simplicity, let's just set isLoggedIn to false and clear the user object
       commit("setLoggedIn", false);
       commit("setUser", null);
@@ -56,6 +62,9 @@ export default createStore({
     userName(state) {
       console.log(state.user.lastName);
       return state.user ? state.user.lastName : null;
+    },
+    userId(state) {
+      return state.user ? state.user.id : null;
     },
   },
   modules: {},
