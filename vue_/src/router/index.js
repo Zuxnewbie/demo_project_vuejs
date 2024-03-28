@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
+import store from "../store/index.js"; // Import Vuex Store
 
 const routes = [
   {
@@ -48,16 +49,19 @@ const routes = [
     path: "/admin/category/add",
     name: "AddCategory",
     component: () => import("../views/Category/AddCategory.vue"),
+    meta: { requiresAdmin: true },
   },
   {
     path: "/admin/category",
     name: "Category",
     component: () => import("../views/Category/Category_View.vue"),
+    meta: { requiresAdmin: true },
   },
   {
     path: "/admin/view",
     name: "Admin_view",
     component: () => import("../views/Admin_view.vue"),
+    meta: { requiresAdmin: true },
   },
   {
     path: "/admin",
@@ -68,6 +72,7 @@ const routes = [
     path: "/admin/product",
     name: "AdminProuduct",
     component: () => import("../views/Product/Product_view.vue"),
+    meta: { requiresAdmin: true },
   },
   // category edit
   {
@@ -80,6 +85,7 @@ const routes = [
     path: "/admin/product/new",
     name: "AddProduct",
     component: () => import("../views/Product/AddProduct.vue"),
+    meta: { requiresAdmin: true },
   },
   // edit product
   {
@@ -112,33 +118,24 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  const isAdminRoute = to.matched.some((record) =>
-    record.path.startsWith("/admin")
-  );
+  console.log("Navigating to:", to.name); // Log the name of the route we're navigating to
+  console.log("Requires admin:", to.meta.requiresAdmin); // Log whether the route requires admin authentication
+  console.log("Is admin logged in:", store.state.isAdminLoggedIn); // Log the state of isAdminLoggedIn
 
-  const isLoggedIn = localStorage.getItem("isAdminLoggedIn");
-
-  // Kiểm tra xem đường dẫn hiện tại có phải là đăng nhập admin không
-  const isLoginRoute = to.name === "Admin_login";
-
-  console.log(isLoggedIn);
-
-  // Nếu đường dẫn hiện tại là trang đăng nhập admin và đã đăng nhập, chuyển hướng đến trang admin
-  if (isLoginRoute && isLoggedIn === "true") {
-    next({ name: "home" });
-  }
-  // Nếu đang cố gắng truy cập vào một route admin mà chưa đăng nhập, chuyển hướng đến trang đăng nhập admin
-  else if (isAdminRoute && isLoggedIn !== "true" && !isLoginRoute) {
-    next("/admin");
+  // Check if it's an admin route and if admin is logged in
+  if (to.meta.requiresAdmin && !store.state.isAdminLoggedIn) {
+    console.log("Redirecting to Admin login");
+    next({ name: "Admin_login" }); // Redirect to Admin login if not logged in
   } else {
-    next(); // Cho phép tiếp tục truy cập
+    console.log("Proceeding to the route");
+    next(); // Proceed to the route
   }
 });
 
-router.beforeEach((to, from, next) => {
-  // Cuộn lên đầu trang khi chuyển route
-  window.scrollTo(0, 0);
-  next();
-});
+// router.beforeEach((to, from, next) => {
+//   // Cuộn lên đầu trang khi chuyển route
+//   window.scrollTo(0, 0);
+//   next();
+// });
 
 export default router;

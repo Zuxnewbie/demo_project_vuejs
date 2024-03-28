@@ -11,6 +11,10 @@ if (user) {
     // Set the user state in the Vuex store if user data exists
     store.commit('setLoggedIn', true);
     store.commit('setUser', user);
+}else {
+    // Clear the user state in the Vuex store if no user data exists
+    store.commit('setLoggedIn', false);
+    store.commit('setUser', null);
 }
 
 const app = createApp(App);

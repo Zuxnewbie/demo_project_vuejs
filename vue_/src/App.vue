@@ -1,8 +1,17 @@
 <template>
   <div id="app">
     <AppNavbar />
-    <router-view v-if="categories && products" :baseURL="baseURL" :categories="categories" :products="products"
-      :users="users" :admin="admin" :carts="carts" @fetchData="fetchData" style="min-height: 60vh">
+    <router-view
+      v-if="categories && products"
+      :baseURL="baseURL"
+      :categories="categories"
+      :products="products"
+      :users="users"
+      :admin="admin"
+      :carts="carts"
+      @fetchData="fetchData"
+      style="min-height: 60vh"
+    >
     </router-view>
     <Footer_home />
   </div>
@@ -29,7 +38,7 @@ export default {
       users: null,
       admin: null,
       carts: null,
-      isAdminLoggedIn: false,
+      // isAdminLoggedIn: false,
     };
   },
   methods: {
@@ -44,11 +53,11 @@ export default {
         const usersResponse = await axios.get(this.baseURL + "users");
         this.users = usersResponse.data;
 
-        const adminResponse = await axios.get(this.baseURL + "admin");
-        this.admin = adminResponse.data;
-
         const cartResponse = await axios.get(this.baseURL + "carts");
         this.carts = cartResponse.data;
+
+        const adminResponse = await axios.get(this.baseURL + "admin");
+        this.admin = adminResponse.data;
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -56,16 +65,15 @@ export default {
   },
   watch: {
     // Kiểm tra khi trạng thái đăng nhập của admin thay đổi và chuyển hướng nếu cần
-    isAdminLoggedIn(newValue) {
-      if (!newValue && this.$route.path.startsWith("/admin")) {
-        this.$router.replace("/admin");
-      }
-    },
+    // isAdminLoggedIn(newValue) {
+    //   if (!newValue && this.$route.path.startsWith("/admin")) {
+    //     this.$router.replace("/admin");
+    //   }
+    // },
   },
   mounted() {
     this.fetchData();
   },
-
 };
 </script>
 

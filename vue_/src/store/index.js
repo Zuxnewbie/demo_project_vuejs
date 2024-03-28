@@ -4,6 +4,8 @@ export default createStore({
   state: {
     isLoggedIn: false,
     user: null,
+    isAdminLoggedIn: sessionStorage.getItem("isAdminLoggedIn") === "true",
+    admin: null,
   },
   mutations: {
     setLoggedIn(state, isLoggedIn) {
@@ -11,6 +13,10 @@ export default createStore({
     },
     setUser(state, user) {
       state.user = user;
+    },
+    setIsAdminLoggedIn(state, isAdminLoggedIn) {
+      state.isAdminLoggedIn = isAdminLoggedIn;
+      sessionStorage.setItem("isAdminLoggedIn", isAdminLoggedIn);
     },
   },
   actions: {
@@ -57,6 +63,28 @@ export default createStore({
       commit("setLoggedIn", false);
       commit("setUser", null);
     },
+
+    // Action để đăng nhập admin
+    async loginAdmin({ commit }, { name, pass }) {
+      try {
+        // Lấy danh sách admin từ props hoặc API
+        const response = await axios.get("http://localhost:3000/admin");
+        const admins = response.data;
+        const admin = admins.find(
+          (admin) => admin.name === name && admin.pass == pass
+        );
+
+        if (admin) {
+          // Đánh dấu trạng thái đăng nhập của admin
+          localStorage.setItem("isAdminLoggedIn", true);
+          commit("setIsAdminLoggedIn", true);
+        } else {
+          console.error("Incorrect admin name or password");
+        }
+      } catch (error) {
+        console.error("Error logging in as admin:", error);
+      }
+    },
   },
   getters: {
     userName(state) {
@@ -66,6 +94,9 @@ export default createStore({
     userId(state) {
       return state.user ? state.user.id : null;
     },
+    // adminConfirm(state){
+    //   //
+    // }
   },
   modules: {},
 });
