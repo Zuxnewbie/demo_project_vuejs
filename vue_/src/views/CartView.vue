@@ -35,7 +35,8 @@
                       <i class="fa fa-minus"></i>
                     </button>
                   </div>
-                  <input type="text" class="form-control form-control-sm text-center border-0" value="1" />
+                  <input type="text" class="form-control form-control-sm text-center border-0"
+                    v-model="this.quantity" />
                   <div class="input-group-btn">
                     <button class="btn btn-sm btn-plus rounded-circle bg-light border">
                       <i class="fa fa-plus"></i>
@@ -105,19 +106,23 @@ import axios from 'axios';
 
 export default {
   name: "CartView",
-  props: ["baseURL", "fetchData"],
+  props: ["baseURL", "carts"],
   data() {
     return {
       cart: [],
+      quantity: 1
     }
   },
   created() {
+
     this.getAll();
+
   },
   methods: {
     async getAll() {
       const cartResponse = await axios.get(this.baseURL + "carts");
       this.cart = cartResponse.data;
+      console.log(this.cart);
     },
 
     deleteItem(id) {
@@ -139,7 +144,7 @@ export default {
                 if (res) {
                   this.$swal.fire({
                     title: "Deleted!",
-                    text: "Your item has been deleted.",
+                    text: "Your dsfdsitem has been deleted.",
                     icon: "success"
                   });
                   this.getAll();

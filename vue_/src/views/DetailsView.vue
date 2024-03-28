@@ -42,7 +42,8 @@
                     <i class="fa fa-minus"></i>
                   </button>
                 </div>
-                <input type="text" class="form-control form-control-sm text-center border-0" v-model="quantity" />
+                <input type="text" value="1" class="form-control form-control-sm text-center border-0"
+                  v-model="quantity" />
                 <div class="input-group-btn">
                   <button class="btn btn-sm btn-plus rounded-circle bg-light border" @click="increaseQuantity">
                     <i class="fa fa-plus"></i>
@@ -193,10 +194,12 @@
 </template>
 
 <script>
+import axios from 'axios';
 
 
-// import axios from "axios";
-// import swal from "sweetalert";
+
+
+import swal from "sweetalert";
 
 export default {
   name: "CheckOutView",
@@ -236,48 +239,59 @@ export default {
 
     async addToCart(id) {
       console.log(id);
-      const existingItemIndex = this.carts.findIndex(item => item.productId === id);
+      const existingItemIndex = this.carts.findIndex(item => item.id === id);
       console.log(existingItemIndex);
       if (existingItemIndex !== -1) {
-        const newArr = this.carts.map(item => {
-          if (item.productId == id) {
-            return { ...item, quantity: item.quantity + item.quantity + this.quantity }
-          }
-        })
-        console.log(newArr);
-
+        let filteredArray = this.carts.filter((item) => item.id == id);
+        console.log(filteredArray[0]);
+        const { id: idProduct } = filteredArray[0];
+        const newQuantity = filteredArray[0].quantity = this.quantity += filteredArray[0].quantity;
+        console.log(newQuantity);
+        const newItem = {
+          ...filteredArray[0],
+          quantity: newQuantity
+        }
+        axios.put(`${this.baseURL}carts/${idProduct}`, newItem)
+          .then(() => {
+            this.quantity = 1;
+            swal({
+              text: "Thêm vào giỏ hàng thành công !!!",
+              icon: "success",
+            });
+          })
+      } else {
+        const itemCart = {
+          id: this.product.id,
+          categoryId: this.category.id,
+          idUser: this.userId,
+          quantity: this.quantity,
+          price: this.product.price,
+          imageURL: this.product.imageURL,
+          productName: this.product.productName,
+        };
+        console.log(itemCart);
+        await axios.post(`${this.baseURL}carts`, itemCart)
+          .then(async () => {
+            await swal({
+              text: "Thêm vào giỏ hàng thành công !!!",
+              icon: "success",
+            })
+            window.location.reload();
+          })
+          .catch(err => {
+            console.log("Error while adding to cart:", err);
+            swal({
+              text: "Có lỗi xảy ra khi thêm vào giỏ hàng. Vui lòng thử lại sau.",
+              icon: "error",
+            });
+          });
       }
-      // const itemCart = {
-      //   categoryId: this.category.id,
-      //   idUser: this.userId,
-      //   quantity: this.quantity,
-      //   price: this.product.price,
-      //   imageURL: this.product.imageURL,
-      //   productName: this.product.productName,
-      // };
-
-      // await axios
-      //   .post(`${this.baseURL}carts`, itemCart)
-      //   .then(() => {
-      //     swal({
-      //       text: "Thêm vào giỏ hàng thành công !!!",
-      //       icon: "success",
-      //     });
-      //   })
-      //   .catch((err) => {
-      //     console.log("Error while adding to cart:", err);
-      //     swal({
-      //       text: "Có lỗi xảy ra khi thêm vào giỏ hàng. Vui lòng thử lại sau.",
-      //       icon: "error",
-      //     });
-      //   });
     },
   },
   mounted() {
     this.id = this.$route.params.id;
     this.product = this.products.find((product) => product.id == this.id);
-    this.category = this.categories.find(
-      (category) => category.id == this.product.productID
+    this.category = this.categories.find((category) => category.id == this.product.productID
     );
   },
 };

@@ -183,14 +183,13 @@
   ],
   "carts": [
     {
-      "id": "50e6",
+      "id": "71b4",
       "categoryId": "1",
-      "productId": "1234",
       "idUser": "ac32",
-      "quantity": 1,
-      "price": 30000,
+      "quantity": 6,
+      "price": 16000,
       "imageURL": "https://product.hstatic.net/200000157781/product/dsc_7673_copy_21112823a1ce471d895c58e3ea2bf8e8.jpg",
-      "productName": "Dâu Thời Thìn"
+      "productName": "Chuối"
     }
   ]
 }

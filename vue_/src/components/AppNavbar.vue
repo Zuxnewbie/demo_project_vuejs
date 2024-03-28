@@ -141,7 +141,7 @@ import "@/assets/Frontend/css/bootstrap.min.css";
 import "@/assets/Frontend/css/style.css";
 import "@/assets/Frontend/lib/lightbox/css/lightbox.min.css";
 import "@/assets/Frontend/lib/owlcarousel/assets/owl.carousel.min.css";
-import axios from "axios";
+// import axios from "axios";
 
 export default {
   name: "AppNavbar",
@@ -157,7 +157,8 @@ export default {
   },
   methods: {
     async logout() {
-      await axios.delete();
+
+      this.$store.dispatch("logout");
     },
   }
 
