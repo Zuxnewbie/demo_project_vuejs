@@ -190,6 +190,15 @@
       "price": 16000,
       "imageURL": "https://product.hstatic.net/200000157781/product/dsc_7673_copy_21112823a1ce471d895c58e3ea2bf8e8.jpg",
       "productName": "Chuối"
+    },
+    {
+      "id": "1234",
+      "categoryId": "1",
+      "idUser": "ac32",
+      "quantity": 2,
+      "price": 30000,
+      "imageURL": "https://product.hstatic.net/200000157781/product/dsc_7673_copy_21112823a1ce471d895c58e3ea2bf8e8.jpg",
+      "productName": "Dâu Thời Thìn"
     }
   ]
 }

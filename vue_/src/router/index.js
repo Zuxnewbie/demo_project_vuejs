@@ -92,7 +92,7 @@ const routes = [
     path: "/admin/product/:id",
     name: "EditProudct",
     component: () => import("../views/Product/EditProudct.vue"),
-    meta: { requiresAdmin: true }
+    meta: { requiresAdmin: true },
   },
   // Show detail (Chi tiết hàng hóa)
   {
@@ -133,10 +133,10 @@ router.beforeEach((to, from, next) => {
   }
 });
 
-// router.beforeEach((to, from, next) => {
-//   // Cuộn lên đầu trang khi chuyển route
-//   window.scrollTo(0, 0);
-//   next();
-// });
+router.beforeEach((to, from, next) => {
+  // Cuộn lên đầu trang khi chuyển route
+  window.scrollTo(0, 0);
+  next();
+});
 
 export default router;

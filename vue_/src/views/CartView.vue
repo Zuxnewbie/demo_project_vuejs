@@ -49,13 +49,12 @@
                     class="form-control form-control-sm text-center border-0"
                     v-model="itemCart.quantity"
                   />
-                
+
                   <!-- <span
                     class="form-control form-control-sm text-center border-0"
                   >
                     {{ itemCart.quantity }}
                   </span> -->
-
 
                   <!-- <div class="input-group-btn">
                     <button
@@ -67,7 +66,9 @@
                 </div>
               </td>
               <td>
-                <p class="mb-0 mt-4">{{ itemCart.price }}</p>
+                <p class="mb-0 mt-4">
+                  {{ (total = itemCart.quantity * itemCart.price) }}
+                </p>
               </td>
               <td>
                 <button
@@ -86,10 +87,12 @@
           type="text"
           class="border-0 border-bottom rounded me-5 py-3 mb-4"
           placeholder="Coupon Code"
+          v-model="couponCode"
         />
         <button
           class="btn border-secondary rounded-pill px-4 py-3 text-primary"
           type="button"
+          @click="applyCoupon"
         >
           Apply Coupon
         </button>
@@ -104,12 +107,12 @@
               </h1>
               <div class="d-flex justify-content-between mb-4">
                 <h5 class="mb-0 me-4">Subtotal:</h5>
-                <p class="mb-0">$96.00</p>
+                <p class="mb-0">{{ calculateTotal }}</p>
               </div>
               <div class="d-flex justify-content-between">
                 <h5 class="mb-0 me-4">Coupon</h5>
                 <div class="">
-                  <p class="mb-0">?????????</p>
+                  <p class="mb-0">{{ couponInfo }}</p>
                 </div>
               </div>
             </div>
@@ -117,7 +120,7 @@
               class="py-4 mb-4 border-top border-bottom d-flex justify-content-between"
             >
               <h5 class="mb-0 ps-4 me-4">Total</h5>
-              <p class="mb-0 pe-4">$99.00</p>
+              <p class="mb-0 pe-4">{{ adjustedTotal }}</p>
             </div>
 
             <router-link
@@ -145,17 +148,53 @@ export default {
   data() {
     return {
       cart: [],
-      quantity: 1,
+      total: null,
+      couponCode: "",
+      appliedCoupon: null, // Track the applied coupon
+      couponApplied: false,
     };
   },
   created() {
     this.getAll();
+  },
+  computed: {
+    calculateTotal() {
+      let total = 0;
+      this.cart.forEach((item) => {
+        total += item.quantity * item.price;
+      });
+      return total;
+    },
+    adjustedTotal() {
+      if (this.couponCode.toLowerCase() === "nhan") {
+        // Apply 10% discount if the coupon code is "nhan"
+        return this.calculateTotal * 0.9; // 10% discount
+      } else {
+        return this.calculateTotal; // No discount
+      }
+    },
+    couponInfo() {
+      if (this.couponCode === "nhan") {
+        return "10% discount applied"; // Display coupon information if applied
+      } else {
+        return "No coupon applied"; // Display if no coupon applied
+      }
+    },
   },
   methods: {
     async getAll() {
       const cartResponse = await axios.get(this.baseURL + "carts");
       this.cart = cartResponse.data;
       console.log(this.cart);
+    },
+
+    applyCoupon() {
+      // This method is called when the user clicks on the "Apply Coupon" button
+      if (this.couponCode.toLowerCase() === "nhan") {
+        this.couponApplied = true; // Set couponApplied to true if the coupon is applied
+      } else {
+        this.couponApplied = false; // Set couponApplied to false if the coupon is not applied
+      }
     },
 
     deleteItem(id) {
