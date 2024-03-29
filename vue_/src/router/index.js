@@ -92,6 +92,7 @@ const routes = [
     path: "/admin/product/:id",
     name: "EditProudct",
     component: () => import("../views/Product/EditProudct.vue"),
+    meta: { requiresAdmin: true }
   },
   // Show detail (Chi tiết hàng hóa)
   {

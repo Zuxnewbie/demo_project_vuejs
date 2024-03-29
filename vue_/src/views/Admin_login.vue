@@ -45,7 +45,7 @@ export default {
           name: this.name,
           pass: this.pass,
         }); // Dispatch login action
-        this.$router.replace("/admin/product");
+        this.$router.replace("/admin/view");
         swal({
           text: "Đăng nhập thành công",
           icon: "success",
