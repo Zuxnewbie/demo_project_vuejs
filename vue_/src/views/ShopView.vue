@@ -9,6 +9,7 @@
             <div class="col-xl-3">
               <div class="input-group w-100 mx-auto d-flex">
                 <input
+                  v-model="searchKeyword"
                   type="search"
                   class="form-control p-3"
                   placeholder="keywords"
@@ -89,7 +90,7 @@
             <div class="col-lg-9">
               <div class="row g-4 justify-content-center">
                 <div
-                  v-for="product in this.product"
+                  v-for="product in filteredProducts"
                   :key="product.id"
                   class="col-md-6 col-lg-6 col-xl-4"
                 >
@@ -127,7 +128,7 @@
                       </p>
                       <div class="d-flex justify-content-between flex-lg-wrap">
                         <p class="text-dark fs-5 fw-bold mb-0">
-                          ${{ product.price }} / kg
+                          {{ formatCurrencyVND(product.price) }} / kg
                         </p>
 
                         <router-link
@@ -162,7 +163,7 @@ export default {
       id: null,
       product: [],
       category: [],
-
+      searchKeyword: "",
       msg: "",
       quantity: null,
       name: null,
@@ -170,22 +171,40 @@ export default {
   },
   props: ["categories", "products"],
   mounted() {
-    // Gọi hàm filterProduct() khi component được mounted
+    // Hàm để định dạng số tiền thành chuỗi định dạng tiền tệ theo VND
+
+    // Call handleProductFilter() method when the component is mounted
     this.handleProductFilter(1, "Trái cây Việt Nam");
   },
+  computed: {
+    filteredProducts() {
+      // Filter products based on the search keyword
+      return this.product.filter((product) =>
+        product.productName
+          .toLowerCase()
+          .includes(this.searchKeyword.toLowerCase())
+      );
+    },
+  },
   methods: {
-    // Phương thức để lấy ID và lọc sản phẩm
+    formatCurrencyVND(amount) {
+      return new Intl.NumberFormat("vi-VN", {
+        style: "currency",
+        currency: "VND",
+      }).format(amount);
+    },
+    // Method to filter products by category ID and name
     handleProductFilter(id = null, name) {
       if (id !== null) {
         this.id = id;
       }
 
-      // Lọc sản phẩm tương ứng với ID mới
+      // Filter products corresponding to the new ID
       if (this.id !== null) {
         this.product = this.products.filter(
           (product) => product.productID == this.id
         );
-        // Đếm số lượng sản phẩm trong danh mục
+        // Count the number of products in the category
         console.log(name);
         this.name = name;
         const categoryProductCount = this.products.reduce((acc, curr) => {
@@ -195,7 +214,7 @@ export default {
             return acc;
           }
         }, 0);
-        // Cập nhật số lượng sản phẩm trong danh mục
+        // Update the number of products in the category
         this.categories.forEach((category) => {
           if (category.id === this.id) {
             category.productCount = categoryProductCount;
@@ -224,15 +243,15 @@ export default {
   display: block;
   display: -webkit-box;
   -webkit-line-clamp: 4;
-  /* Số dòng tối đa muốn hiển thị */
+  /* Maximum number of lines to display */
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
 
 .fruite-img img {
   width: 200px;
-  /* Đặt chiều rộng mong muốn */
+  /* Desired width */
   height: 200px;
-  /* Đặt chiều cao mong muốn */
+  /* Desired height */
 }
 </style>

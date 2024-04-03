@@ -14,6 +14,7 @@
           <th scope="col">Description</th>
           <th scope="col">Price</th>
           <th scope="col"></th>
+          <th scope="col"></th>
         </tr>
       </thead>
       <tbody>
@@ -30,6 +31,9 @@
               Edit Product
             </router-link>
           </td>
+          <td>
+            <button @click="deleteProduct(product.id)">Delete Product</button>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -37,9 +41,11 @@
 </template>
 <script>
 // import ProductAdmin from '../../components/ProductAdmin.vue';
+import axios from "axios";
+import swal from "sweetalert";
 export default {
   name: "Product_View",
-  props: ["products"],
+  props: ["products", "baseURL"],
   computed: {
     formattedProducts() {
       return this.products.map((product) => {
@@ -50,6 +56,24 @@ export default {
           id: product.id,
         };
       });
+    },
+  },
+  methods: {
+    async deleteProduct(id) {
+      try {
+        await axios.delete(`${this.baseURL}product/${id}`);
+        this.$emit("fetchData"); // Assuming fetchData emits an event to fetch updated product data
+        swal({
+          text: "Product has been deleted successfully",
+          icon: "success",
+        });
+      } catch (error) {
+        console.error("Error deleting product:", error);
+        swal({
+          text: "Error deleting product",
+          icon: "error",
+        });
+      }
     },
   },
 };

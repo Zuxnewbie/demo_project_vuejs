@@ -13,7 +13,9 @@
       <h4>{{ product.productName }}</h4>
       <p>{{ product.description.substring(0, 65) }}...</p>
       <div class="d-flex justify-content-between flex-lg-wrap">
-        <p class="text-dark fs-5 fw-bold mb-0">{{ product.price }} đ / kg</p>
+        <p class="text-dark fs-5 fw-bold mb-0">
+          {{ formatCurrencyVND(product.price) }} / kg
+        </p>
         <router-link
           :to="{ name: 'ShowDetails', params: { id: product.id } }"
           class="btn border border-secondary rounded-pill px-3 text-primary"
@@ -29,6 +31,15 @@
 export default {
   name: "ProductBox",
   props: ["product"],
+
+  methods: {
+    formatCurrencyVND(amount) {
+      return new Intl.NumberFormat("vi-VN", {
+        style: "currency",
+        currency: "VND",
+      }).format(amount);
+    },
+  },
 };
 </script>
 

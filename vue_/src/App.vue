@@ -9,6 +9,7 @@
       :users="users"
       :admin="admin"
       :carts="carts"
+      :bill="bill"
       @fetchData="fetchData"
       style="min-height: 60vh"
     >
@@ -38,6 +39,8 @@ export default {
       users: null,
       admin: null,
       carts: null,
+      bill: null,
+
       // isAdminLoggedIn: false,
     };
   },
@@ -58,6 +61,9 @@ export default {
 
         const adminResponse = await axios.get(this.baseURL + "admin");
         this.admin = adminResponse.data;
+
+        const billResponse = await axios.get(this.baseURL + "bill");
+        this.bill = billResponse.data;
       } catch (error) {
         console.error("Error fetching data:", error);
       }

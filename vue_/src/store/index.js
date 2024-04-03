@@ -6,6 +6,7 @@ export default createStore({
     user: null,
     isAdminLoggedIn: sessionStorage.getItem("isAdminLoggedIn") === "true",
     admin: null,
+    cart: [],
   },
   mutations: {
     setLoggedIn(state, isLoggedIn) {
@@ -17,6 +18,9 @@ export default createStore({
     setIsAdminLoggedIn(state, isAdminLoggedIn) {
       state.isAdminLoggedIn = isAdminLoggedIn;
       sessionStorage.setItem("isAdminLoggedIn", isAdminLoggedIn);
+    },
+    clearCart(state) {
+      state.cart = [];
     },
   },
   actions: {

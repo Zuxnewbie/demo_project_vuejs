@@ -3,26 +3,39 @@
   <div class="container-fluid py-5">
     <div class="container py-5">
       <h1 class="mb-4">Billing details</h1>
-      <form action="#">
+      <form @submit.prevent="handleOrder">
         <div class="row g-5">
           <div class="col-md-12 col-lg-6 col-xl-7">
             <div class="row">
               <div class="col-md-12 col-lg-12">
                 <div class="form-item w-100">
                   <label class="form-label my-3">Full Name</label>
-                  <input type="text" class="form-control" />
+                  <span v-if="isLoggedIn" class="form-control">{{
+                    userName
+                  }}</span>
                 </div>
               </div>
             </div>
 
             <div class="form-item">
               <label class="form-label my-3">Address <sup>*</sup></label>
-              <input type="text" class="form-control" placeholder="" />
+              <input
+                type="text"
+                class="form-control"
+                placeholder=""
+                v-model="address"
+                required
+              />
             </div>
 
             <div class="form-item">
               <label class="form-label my-3">Mobile<sup>*</sup></label>
-              <input type="tel" class="form-control" />
+              <input
+                type="tel"
+                class="form-control"
+                v-model="mobile"
+                required
+              />
             </div>
             <hr />
             <div class="form-item">
@@ -33,6 +46,7 @@
                 cols="30"
                 rows="11"
                 placeholder="Oreder Notes (Optional)"
+                v-model="note"
               ></textarea>
             </div>
           </div>
@@ -116,7 +130,7 @@
               class="row g-4 text-center align-items-center justify-content-center pt-4"
             >
               <button
-                type="button"
+                type="submit"
                 class="btn border-secondary py-3 px-4 text-uppercase w-100 text-primary"
               >
                 Place Order
@@ -131,18 +145,70 @@
 </template>
 
 <script>
+import axios from "axios";
+import swal from "sweetalert";
+import store from '../store/index.js';
 export default {
-  props: ["baseURL", "carts"],
+  props: ["baseURL", "carts", "bill"],
 
   name: "CheckOutView",
   data() {
     return {
+      name: null,
+      address: null,
+      mobile: null,
+      note: null,
       showImage: false,
     };
   },
+  computed: {
+    isLoggedIn() {
+      return this.$store.state.isLoggedIn;
+    },
+    userName() {
+      return this.$store.state.user ? this.$store.state.user.lastName : null;
+    },
+  },
   methods: {
+    formatCurrencyVND(amount) {
+      return new Intl.NumberFormat("vi-VN", {
+        style: "currency",
+        currency: "VND",
+      }).format(amount);
+    },
     toggleImage() {
       this.showImage = !this.showImage;
+    },
+    handleOrder(e) {
+      e.preventDefault();
+      if (this.address !== "" && this.mobile !== "") {
+        const bill = {
+          name: this.userName,
+          address: this.address,
+          mobile: this.mobile,
+          note: this.note,
+          product: this.product,
+        };
+        axios
+          .post(`${this.baseURL}bill`, bill)
+          .then(() => {
+            store.commit('clearCart');
+            this.$router.replace("/");
+            swal({
+              text: "Thank you for service",
+              icon: "success",
+            });
+          })
+          .catch((err) => console.log("err", err));
+      } else {
+        swal({
+          text: "Vui long dien vao thong tin con thieu xot",
+          icon: "error",
+        });
+      }
+    },
+    clearCart() {
+      this.$emit("clearCart"); // Emit an event to notify the parent component to clear the cart
     },
   },
 };

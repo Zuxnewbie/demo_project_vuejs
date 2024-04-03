@@ -175,15 +175,6 @@
   ],
   "carts": [
     {
-      "id": "71b4",
-      "categoryId": "1",
-      "idUser": "ac32",
-      "quantity": 6,
-      "price": 16000,
-      "imageURL": "https://product.hstatic.net/200000157781/product/dsc_7673_copy_21112823a1ce471d895c58e3ea2bf8e8.jpg",
-      "productName": "Chuối"
-    },
-    {
       "id": "1234",
       "categoryId": "1",
       "idUser": "ac32",
@@ -191,6 +182,15 @@
       "price": 30000,
       "imageURL": "https://product.hstatic.net/200000157781/product/dau_bi_da_lat__3__ff006c11c0624368861722d91705091b.jpg",
       "productName": "Dâu Thời Thìn"
+    }
+  ],
+  "bill": [
+    {
+      "id": "9864",
+      "name": "Nhân",
+      "address": "sd",
+      "mobile": "0980988889",
+      "note": "asd"
     }
   ]
 }

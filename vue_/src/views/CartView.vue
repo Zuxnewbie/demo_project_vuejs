@@ -19,7 +19,7 @@
               <th scope="row">
                 <div class="d-flex align-items-center">
                   <img
-                    src="../assets/Frontend/img/vegetable-item-3.png"
+                    :src="itemCart.imageURL"
                     class="img-fluid me-5 rounded-circle"
                     style="width: 80px; height: 80px"
                     alt=""
@@ -30,7 +30,9 @@
                 <p class="mb-0 mt-4">{{ itemCart.productName }}</p>
               </td>
               <td>
-                <p class="mb-0 mt-4">{{ itemCart.price }}</p>
+                <p class="mb-0 mt-4">
+                  {{ formatCurrencyVND(itemCart.price) }}
+                </p>
               </td>
               <td class="soluong">
                 <div
@@ -107,7 +109,7 @@
               </h1>
               <div class="d-flex justify-content-between mb-4">
                 <h5 class="mb-0 me-4">Subtotal:</h5>
-                <p class="mb-0">{{ calculateTotal }}</p>
+                <p class="mb-0">{{ formatCurrencyVND(calculateTotal) }}</p>
               </div>
               <div class="d-flex justify-content-between">
                 <h5 class="mb-0 me-4">Coupon</h5>
@@ -120,7 +122,7 @@
               class="py-4 mb-4 border-top border-bottom d-flex justify-content-between"
             >
               <h5 class="mb-0 ps-4 me-4">Total</h5>
-              <p class="mb-0 pe-4">{{ adjustedTotal }}</p>
+              <p class="mb-0 pe-4">{{ formatCurrencyVND(adjustedTotal) }}</p>
             </div>
 
             <router-link
@@ -141,6 +143,8 @@
 <script>
 import axios from "axios";
 // import swal from 'sweetalert';
+// import store from "@/store/index.js";
+
 
 export default {
   name: "CartView",
@@ -148,6 +152,7 @@ export default {
   data() {
     return {
       cart: [],
+      cartsEmpty: [],
       total: null,
       couponCode: "",
       appliedCoupon: null, // Track the applied coupon
@@ -182,10 +187,20 @@ export default {
     },
   },
   methods: {
+    clearCart() {
+    this.$store.commit('clearCart'); // Call the clearCart mutation
+  },
     async getAll() {
       const cartResponse = await axios.get(this.baseURL + "carts");
       this.cart = cartResponse.data;
       console.log(this.cart);
+    },
+
+    formatCurrencyVND(amount) {
+      return new Intl.NumberFormat("vi-VN", {
+        style: "currency",
+        currency: "VND",
+      }).format(amount);
     },
 
     applyCoupon() {
@@ -241,6 +256,7 @@ export default {
           }
         });
     },
+    
   },
 };
 </script>
